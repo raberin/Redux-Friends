@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { login } from "../actions";
 
+import "./Login.css";
+
 class Login extends React.Component {
   state = {
     credentials: {
@@ -32,24 +34,37 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <form>
-          <input
-            type="text"
-            name="username"
-            placeholder="username"
-            value="this.state.credentials.username"
-            onChange={this.changeHandler}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            value="this.state.credentials.password"
-            onChange={this.changeHandler}
-          />
-          <button>Log In</button>
-        </form>
+      <div className="login-container">
+        <div className="login-wrapper">
+          <form className="login-form-wrapper">
+            <h2 className="login-title">Log in to Friends List</h2>
+            <div className="div-login-inputs">
+              <div className="input-title-div">
+                <p className="input-title-p">USER ID</p>
+                <input
+                  className="login-input"
+                  type="text"
+                  name="username"
+                  value={this.state.credentials.username}
+                  onChange={this.changeHandler}
+                />
+              </div>
+
+              <div className="input-title-div">
+                <p className="input-title-p">PASSWORD</p>
+                <input
+                  className="login-input"
+                  type="password"
+                  name="password"
+                  value={this.state.credentials.password}
+                  onChange={this.changeHandler}
+                />
+
+                <button className="login-button">Log In</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
