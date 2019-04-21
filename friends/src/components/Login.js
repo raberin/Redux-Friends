@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { login } from "../actions";
 
 class Login extends React.Component {
   state = {
@@ -18,6 +19,15 @@ class Login extends React.Component {
         [e.target.name]: e.target.value
       }
     });
+  };
+
+  handleLogin = e => {
+    e.preventDefault();
+    this.props
+      //When credentials inputted into form and submitted, run the login action creator
+      .login(this.state.credentials)
+      //After successful login, send user to protected website (FriendsList link)
+      .then(() => this.props.history.push("/protected"));
   };
 
   render() {
